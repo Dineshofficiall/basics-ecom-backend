@@ -11,7 +11,7 @@ public interface UserInterface {
     String createUser(Users users, Long roleId);
 
 //  2.login retrieve User
-    Users retrieveUser(Users users);
+    Object[] retrieveUser(Users users);
 
 //  3.allUser[admin-user]
     List<Users> allUsers();

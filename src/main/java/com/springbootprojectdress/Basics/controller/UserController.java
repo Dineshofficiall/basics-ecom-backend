@@ -34,7 +34,7 @@ public class UserController {
     //  LoginUser
     @PostMapping("/User")
     public ResponseEntity<?> singleUser(@RequestBody Users users){
-        Users retrieveUserResponse = userInterface.retrieveUser(users);
+        Object[] retrieveUserResponse = userInterface.retrieveUser(users);
 
         if (retrieveUserResponse != null){
             return ResponseEntity.status(HttpStatus.OK)

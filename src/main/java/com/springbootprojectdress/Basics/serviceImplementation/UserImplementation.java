@@ -32,14 +32,20 @@ public class UserImplementation implements UserInterface {
     }
 
 //  loginPage validation
-    public Users retrieveUser(Users users) {
+    public Object[] retrieveUser(Users users) {
         Users existingUser = userRepository.findByMail(users.getMail());
 
-        if (existingUser != null && existingUser.getMail().equals(users.getMail()) && existingUser.getPassword().equals(users.getPassword())){
-            return existingUser;
+
+        if (existingUser != null && existingUser.getMail().equals(users.getMail())) {
+            if (existingUser.getPassword().equals(users.getPassword())){
+                return new Object[]{existingUser, "success"};
+            }
+            else {
+                return new Object[]{null, "password incorrect"};
+            }
         }
         else {
-            return null;
+            return new Object[]{null, "email incorrect"};
         }
     }
 
