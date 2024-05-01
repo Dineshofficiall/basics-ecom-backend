@@ -14,4 +14,10 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
     List<Products> findByProductName(String productName);
 
     List<Products> findByIdIn(List<Long> productIds);
+
+    List<Products> findByProductColor(String color);
+
+    List<Products> findByProductPriceBetween(int startRange, int endRange);
+
+    List<Products> findByProductDiscountGreaterThanEqualOrderByProductDiscount(Integer value);
 }

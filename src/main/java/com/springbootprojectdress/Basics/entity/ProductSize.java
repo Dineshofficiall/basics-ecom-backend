@@ -9,16 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "kart")
-public class Kart {
+@Table(name = "product_size")
+public class ProductSize {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "product_id")
-    private Long product_id;
+    private Long productId;
 
-    @Column(name = "user_id")
-    private Long user_id;
+    @Column(name = "size")
+    private Character size;
+
 }

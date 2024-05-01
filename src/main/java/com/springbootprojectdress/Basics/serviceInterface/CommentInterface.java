@@ -8,7 +8,7 @@ public interface CommentInterface {
 
     String createNewComment(Comment comment);
 
-    List<Comment> getAllComment();
+    List<Comment> getAllComment(Long pId);
 
     String deleteSingleComment(Long commentId);
 }

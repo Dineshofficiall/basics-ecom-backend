@@ -34,9 +34,9 @@ public class CommentController {
     }
 
     //  allComment-get
-    @GetMapping("/allComment")
-    public ResponseEntity<?> allProduct(){
-        List<Comment> allCommentResponse = commentInterface.getAllComment();
+    @GetMapping("/allComment/{pId}")
+    public ResponseEntity<?> allProduct(@PathVariable Long pId){
+        List<Comment> allCommentResponse = commentInterface.getAllComment(pId);
 
         if (allCommentResponse != null){
             return ResponseEntity.status(HttpStatus.OK)
