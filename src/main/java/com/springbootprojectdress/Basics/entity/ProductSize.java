@@ -20,6 +20,6 @@ public class ProductSize {
     private Long productId;
 
     @Column(name = "size")
-    private Character size;
+    private String size;
 
 }
