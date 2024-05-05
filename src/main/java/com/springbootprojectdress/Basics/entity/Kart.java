@@ -17,8 +17,8 @@ public class Kart {
     private Long id;
 
     @Column(name = "product_id")
-    private Long product_id;
+    private Long productId;
 
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 }

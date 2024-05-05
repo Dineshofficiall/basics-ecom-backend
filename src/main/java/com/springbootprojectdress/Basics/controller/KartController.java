@@ -1,6 +1,7 @@
 package com.springbootprojectdress.Basics.controller;
 
 import com.springbootprojectdress.Basics.entity.Kart;
+import com.springbootprojectdress.Basics.entity.KartDetails;
 import com.springbootprojectdress.Basics.serviceInterface.KartInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,17 +30,17 @@ public class KartController {
         }
     }
 
-//    @GetMapping("/getAllKartData/{pId}")
-//    private ResponseEntity<?>getKartData(Long pId){
-//
-//        List<Kart> getAllKartResponse = kartInterface.getKartData(pId);
-//
-//        if (getAllKartResponse != null){
-//            return ResponseEntity.status(HttpStatus.OK)
-//                    .body(getAllKartResponse);
-//        }else {
-//            return ResponseEntity.status(HttpStatus.OK)
-//                    .body("Error Occurred Backend");
-//        }
-//    }
+    @GetMapping("/getAllKartData/{pId}")
+    private ResponseEntity<?>getKartData(@PathVariable Long pId){
+
+        List<KartDetails> getAllKartResponse = kartInterface.getKartData(pId);
+
+        if (getAllKartResponse != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(getAllKartResponse);
+        }else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Error Occurred Backend");
+        }
+    }
 }

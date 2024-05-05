@@ -1,11 +1,14 @@
 package com.springbootprojectdress.Basics.serviceImplementation;
 
 import com.springbootprojectdress.Basics.entity.Kart;
+import com.springbootprojectdress.Basics.entity.KartDetails;
 import com.springbootprojectdress.Basics.repositiory.KartRepository;
+import com.springbootprojectdress.Basics.repositiory.ProductRepository;
 import com.springbootprojectdress.Basics.serviceInterface.KartInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +17,9 @@ public class KartImplementation implements KartInterface {
     @Autowired
     KartRepository kartRepository;
 
+    @Autowired
+    ProductRepository productRepository;
+
 //  create
     public String createKartData(Kart kart) {
         kartRepository.save(kart);
@@ -21,9 +27,21 @@ public class KartImplementation implements KartInterface {
     }
 
 //  getAll kart
-//    public List<Kart> getKartData(Long pId) {
-//        return kartRepository.findByProduct_Id(pId);
-//    }
+    public List<KartDetails> getKartData(Long pId) {
+//        return kartRepository.findByUserId(pId);
+
+        List<Kart> karts = kartRepository.findByUserId(pId);
+        List<KartDetails> kartDetailsList = new ArrayList<>();
+
+        for (Kart kart : karts){
+            KartDetails kartDetails = new KartDetails();
+            kartDetails.setKartId(kart.getId());
+            kartDetails.setUserId(kart.getUserId());
+            kartDetails.setProducts(productRepository.findById(kart.getProductId()).get());
+            kartDetailsList.add(kartDetails);
+        }
+        return kartDetailsList;
+    }
 
 
 }
