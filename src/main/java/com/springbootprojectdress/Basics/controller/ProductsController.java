@@ -22,25 +22,6 @@ public class ProductsController {
     @Autowired
     ProductInterface productInterface;
 
-
-    //getproductsby -> api, productService , ratingRepo, service to repo send id,
-    //  create-product
-    @GetMapping("/getProductByRating/{filterRating}")
-    public ResponseEntity<?> getProductByRating(@PathVariable int filterRating){
-        List<Products> productByRating = productInterface.getProductByRating(filterRating);
-
-        if (productByRating != null){
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(productByRating);
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("ErrorOccurred");
-        }
-    }
-
-
-
 //  create-product
     @PostMapping("/addProduct")
     public ResponseEntity<?> addProduct(@RequestBody Products products){
@@ -86,22 +67,6 @@ public class ProductsController {
         }
     }
 
-//  delete-product
-    @DeleteMapping("/singleProduct/{id}")
-    public ResponseEntity<?> singleProduct(@PathVariable Long id){
-        String productDeleteResponse = productInterface.deleteSingleProduct(id);
-
-        if (productDeleteResponse != null){
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(productDeleteResponse);
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("ErrorOccurred");
-        }
-    }
-
-
 //  update-product
     @PutMapping("/updateProduct/{id}")
     public ResponseEntity<?> updateProduct(@RequestBody Products products, @PathVariable Long id){
@@ -118,8 +83,8 @@ public class ProductsController {
     }
 
 //  delete-product
-    @DeleteMapping("/deleteProduct/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    @DeleteMapping("/singleProduct/{id}")
+    public ResponseEntity<?> singleProduct(@PathVariable Long id){
         String productDeleteResponse = productInterface.deleteSingleProduct(id);
 
         if (productDeleteResponse != null){
@@ -132,7 +97,7 @@ public class ProductsController {
         }
     }
 
-//  categoryName
+//  searchCategoryWise
     @GetMapping("/searchByName/{name}")
     public ResponseEntity<?> nameProduct(@PathVariable String name){
         List<Products> productCategoryResponse = productInterface.searchProductByName(name);
@@ -148,7 +113,7 @@ public class ProductsController {
     }
 
 
-//  categoryName
+//  getCategoryWise
     @GetMapping("/category/{name}")
     public ResponseEntity<?> searchProduct(@PathVariable String name){
         List<Products> productSearchResponse = productInterface.getProductByCategory(name);
@@ -156,6 +121,21 @@ public class ProductsController {
         if (productSearchResponse != null){
             return ResponseEntity.status(HttpStatus.OK)
                     .body(productSearchResponse);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
+    //getProductsBy -> api, productService, ratingRepo, service to repo send id
+    @GetMapping("/getProductByRating/{filterRating}")
+    public ResponseEntity<?> getProductByRating(@PathVariable int filterRating){
+        List<Products> productByRating = productInterface.getProductByRating(filterRating);
+
+        if (productByRating != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productByRating);
         }
         else {
             return ResponseEntity.status(HttpStatus.OK)

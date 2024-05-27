@@ -43,4 +43,18 @@ public class KartController {
                     .body("Error Occurred Backend");
         }
     }
+
+    @DeleteMapping("/deleteById/{id}")
+    private ResponseEntity<?>deleteByKartId(@PathVariable Long id){
+
+        String deleteByKartIdResponse = kartInterface.getDeleteById(id);
+
+        if (deleteByKartIdResponse != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(deleteByKartIdResponse);
+        }else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Error Occurred Backend");
+        }
+    }
 }

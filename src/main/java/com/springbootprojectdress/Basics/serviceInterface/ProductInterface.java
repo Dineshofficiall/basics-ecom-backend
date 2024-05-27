@@ -20,10 +20,10 @@ public interface ProductInterface {
 //  5.deleteProduct
     String deleteSingleProduct(Long id);
 
-//  6.CategoryWise
+//  6.searchCategoryWise
     List<Products> searchProductByName(String searchName);
 
-//  7.
+//  7.getCategoryWise
     List<Products> getProductByCategory(String categoryName);
 
     List<Products> getProductByRating(int filterRating);

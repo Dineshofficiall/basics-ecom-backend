@@ -9,4 +9,6 @@ public interface KartInterface {
     String createKartData(Kart kart);
 
     List<KartDetails> getKartData(Long pId);
+
+    String getDeleteById(Long id);
 }

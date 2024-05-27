@@ -20,14 +20,8 @@ public class ProductImplementation implements ProductInterface {
 
 //  add product
     public String addSingleProduct(Products products) {
-//        if (products.getId() != null){
-//            productRepository.save(products);
-//        }
         products.setProductDiscount(0);
         productRepository.save(products);
-//        else {
-//            return "Failed to add product: Product with ID " + products.getId() + " already exists.";
-//        }
         return "Saved SuccessFully";
     }
 
@@ -47,13 +41,22 @@ public class ProductImplementation implements ProductInterface {
     public Products updateSingleProduct(Products products, Long id) {
          Products existing = productRepository.findById(id).get();
 
-         existing.setProductImage((products.getProductImage()));
-         existing.setProductDescription(products.getProductDescription());
-         existing.setProductPrice(products.getProductPrice());
-         existing.setCategories(products.getCategories());
-//         existing.setStocksUnit(products.getStocksUnit());
-         existing.setProductName(products.getProductName());
-
+         if(products.getProductImage() != null){
+             existing.setProductImage((products.getProductImage()));
+         }
+         if(products.getProductDescription() != null){
+             existing.setProductDescription(products.getProductDescription());
+         }
+         if(products.getProductPrice() != null){
+             existing.setProductPrice(products.getProductPrice());
+         }
+         if(products.getCategories() != null){
+             existing.setCategories(products.getCategories());
+         }
+         if(products.getProductName() != null){
+             existing.setProductName(products.getProductName());
+         }
+         
          productRepository.save(existing);
          return existing;
     }
@@ -65,12 +68,12 @@ public class ProductImplementation implements ProductInterface {
         return "successFully deleted";
     }
 
-//  categoryWise
+//  searchCategoryWise
     public List<Products> searchProductByName(String productName) {
         return productRepository.findByProductName(productName);
     }
 
-//
+//  getCategoryWise
     public List<Products> getProductByCategory(String categoryName) {
         return productRepository.findByCategories(categoryName);
     }

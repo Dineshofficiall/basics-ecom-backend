@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public class KartDetails {
 
     private Long userId;
-    private Products products;
-    private Long kartId;
 
+    private Products products;
+
+    private Long kartId;
 }

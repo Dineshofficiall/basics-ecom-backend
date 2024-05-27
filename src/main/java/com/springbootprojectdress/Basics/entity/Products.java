@@ -26,27 +26,18 @@ public class Products {
     @Column(name = "description")
     private String productDescription;
 
-//    @Column(name = "quantity")
-//    @Convert(converter = ProductImageConverter.class)
-//    private List<String> stocksUnit;
-
     @Column(name = "product_price")
     private Double productPrice;
 
     @Column(name = "categories")
     private String categories;
 
-//    nullable = false,
     @Column(name = "image", columnDefinition = "varchar(800)")
     @Convert(converter = ProductImageConverter.class)
     private List<String> productImage;
 
     @Column(name = "color")
     private String productColor;
-
-//    @Column(name = "size")
-//    @Convert(converter = ProductImageConverter.class)
-//    private List<String> productSize;
 
     @Column(name = "type")
     private String productType;
