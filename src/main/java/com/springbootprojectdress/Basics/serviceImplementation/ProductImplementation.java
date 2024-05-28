@@ -78,11 +78,25 @@ public class ProductImplementation implements ProductInterface {
         return productRepository.findByCategories(categoryName);
     }
 
-
+//  rating
     public List<Products> getProductByRating(int filterRating) {
         List<Long> productIds = ratingRepository.findProductsByRating(filterRating);
         return productRepository.findByIdIn(productIds);
     }
 
+//  colorCategory
+    public List<Products> getColorByProduct(String productColor) {
+        return productRepository.findByProductColor(productColor);
+    }
+
+//  priceHighToLow
+    public List<Products> getProductHighToLowPrice() {
+        return productRepository.findAllByOrderByProductPriceDesc();
+    }
+
+//  priceLowToHigh
+    public List<Products> getProductLowToHighPrice() {
+        return productRepository.findAllByOrderByProductPriceAsc();
+    }
 
 }

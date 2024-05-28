@@ -27,4 +27,13 @@ public interface ProductInterface {
     List<Products> getProductByCategory(String categoryName);
 
     List<Products> getProductByRating(int filterRating);
+
+//  9.colorCategory
+    List<Products> getColorByProduct(String productColor);
+
+//  10.priceHighToLow
+    List<Products> getProductHighToLowPrice();
+
+//  11.priceLowToHigh
+    List<Products> getProductLowToHighPrice();
 }

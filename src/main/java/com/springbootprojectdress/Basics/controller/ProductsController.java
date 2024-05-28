@@ -143,6 +143,52 @@ public class ProductsController {
         }
     }
 
+//  colorCategory
+    @GetMapping("/getColorByProduct/{productColor}")
+    public ResponseEntity<?> getColorByProduct(@PathVariable String productColor){
+        List<Products> productByColor = productInterface.getColorByProduct(productColor);
+
+        if (productByColor != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productByColor);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
+
+//  productPriceUpToDown
+    @GetMapping("/getProductHighToLowPrice")
+    public ResponseEntity<?> getProductHighToLowPrice(){
+        List<Products> productHighToLowPrice = productInterface.getProductHighToLowPrice();
+
+        if (productHighToLowPrice != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productHighToLowPrice);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
+//  productPriceDownToUp
+    @GetMapping("/getProductLowToHighPrice")
+    public ResponseEntity<?> getProductLowToHighPrice(){
+        List<Products> productLowToHighPrice = productInterface.getProductLowToHighPrice();
+
+        if (productLowToHighPrice != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productLowToHighPrice);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
     @PostMapping("/uploadImage")
     public  ResponseEntity<?> uploadImage (@RequestParam("file")MultipartFile images) throws IOException {
         byte[] bytes = images.getBytes();
