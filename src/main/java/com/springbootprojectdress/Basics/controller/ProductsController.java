@@ -189,6 +189,21 @@ public class ProductsController {
         }
     }
 
+//  productRange
+    @GetMapping("/getProductRange/{startPrice}/{endPrice}")
+    public ResponseEntity<?> getProductRange(@PathVariable int startPrice, @PathVariable int endPrice){
+        List<Products> productRange = productInterface.getProductRange(startPrice, endPrice);
+
+        if (productRange != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productRange);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
     @PostMapping("/uploadImage")
     public  ResponseEntity<?> uploadImage (@RequestParam("file")MultipartFile images) throws IOException {
         byte[] bytes = images.getBytes();

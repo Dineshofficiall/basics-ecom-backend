@@ -99,4 +99,9 @@ public class ProductImplementation implements ProductInterface {
         return productRepository.findAllByOrderByProductPriceAsc();
     }
 
+//  priceRange
+    public List<Products> getProductRange(int startPrice, int endPrice) {
+        return productRepository.findByProductPriceBetween(startPrice, endPrice);
+    }
+
 }

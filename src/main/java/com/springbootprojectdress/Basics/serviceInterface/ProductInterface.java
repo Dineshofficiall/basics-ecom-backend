@@ -36,4 +36,7 @@ public interface ProductInterface {
 
 //  11.priceLowToHigh
     List<Products> getProductLowToHighPrice();
+
+//  12.priceRange
+    List<Products> getProductRange(int startPrice, int endPrice);
 }
