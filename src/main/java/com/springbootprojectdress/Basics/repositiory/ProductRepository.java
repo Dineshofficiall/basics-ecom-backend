@@ -25,4 +25,7 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
 
     List<Products> findAllByOrderByProductPriceAsc();
 
+    @Query("SELECT p FROM Products p WHERE ((p.productPrice * (100 - p.productDiscount) / 100) BETWEEN (p.productPrice * 0.3) AND (p.productPrice * 0.8))")
+    List<Products> findProductsWithDiscountInRange();
+
 }

@@ -104,4 +104,9 @@ public class ProductImplementation implements ProductInterface {
         return productRepository.findByProductPriceBetween(startPrice, endPrice);
     }
 
+//  priceDiscount
+    public List<Products> getDiscountProduct() {
+        return productRepository.findProductsWithDiscountInRange();
+    }
+
 }

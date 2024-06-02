@@ -204,6 +204,21 @@ public class ProductsController {
         }
     }
 
+//  discountProducts
+    @GetMapping("/getDiscountProduct")
+    public ResponseEntity<?> getDiscountProduct() {
+        List<Products> discountProduct = productInterface.getDiscountProduct();
+
+        if (discountProduct != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(discountProduct);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
     @PostMapping("/uploadImage")
     public  ResponseEntity<?> uploadImage (@RequestParam("file")MultipartFile images) throws IOException {
         byte[] bytes = images.getBytes();
