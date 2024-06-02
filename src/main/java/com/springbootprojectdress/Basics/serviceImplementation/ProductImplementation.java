@@ -70,7 +70,7 @@ public class ProductImplementation implements ProductInterface {
 
 //  searchCategoryWise
     public List<Products> searchProductByName(String productName) {
-        return productRepository.findByProductName(productName);
+        return productRepository.findByCategories(productName);
     }
 
 //  getCategoryWise
