@@ -1,6 +1,7 @@
 package com.springbootprojectdress.Basics.serviceInterface;
 
 import com.springbootprojectdress.Basics.entity.Feedback;
+import com.springbootprojectdress.Basics.entity.UserFeedback;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ public interface FeedbackInterface {
     List<Feedback> singleFeedback(Long userId);
 
 //  3.getAllFeedback
-    List<Feedback> allFeedback();
+    List<UserFeedback> allFeedback();
 }

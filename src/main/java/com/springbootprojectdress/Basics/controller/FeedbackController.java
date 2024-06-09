@@ -1,6 +1,7 @@
 package com.springbootprojectdress.Basics.controller;
 
 import com.springbootprojectdress.Basics.entity.Feedback;
+import com.springbootprojectdress.Basics.entity.UserFeedback;
 import com.springbootprojectdress.Basics.serviceInterface.FeedbackInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,11 +50,11 @@ public class FeedbackController {
 //  getAllFeedBack
     @GetMapping("/allFeedback")
     public ResponseEntity<?> getAllFeedback(){
-        List<Feedback> feedbacks = feedbackInterface.allFeedback();
+        List<UserFeedback> userFeedbacks = feedbackInterface.allFeedback();
 
-        if (feedbacks != null){
+        if (userFeedbacks != null){
             return ResponseEntity.status(HttpStatus.OK)
-                    .body(feedbacks);
+                    .body(userFeedbacks);
         }
         else {
             return ResponseEntity.status(HttpStatus.OK)

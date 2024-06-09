@@ -32,7 +32,7 @@ public class KartImplementation implements KartInterface {
         List<Kart> karts = kartRepository.findByUserId(pId);
         List<KartDetails> kartDetailsList = new ArrayList<>();
 
-        for (Kart kart : karts){ 
+        for (Kart kart : karts){
             KartDetails kartDetails = new KartDetails();
             kartDetails.setKartId(kart.getId());
             kartDetails.setUserId(kart.getUserId());

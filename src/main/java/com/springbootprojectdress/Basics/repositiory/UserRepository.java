@@ -14,13 +14,7 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     @Query("SELECT obj FROM Users obj WHERE obj.mail = :mail")
     Users findByMail(@Param("mail") String mail);
 
-//    if only need all users in the table in not need admin then this is query
-//    @Query(value = "select * from users where user_id in (select user_id from users_roles where role_id = 2)", nativeQuery = true)
-//    List<Users> findAllAdminByRoleId();
-
-
-//    if only need all admins in the table in not need user then this is query
-//    @Query(value = "select * from users where user_id in (select user_id from users_roles where role_id = 1)", nativeQuery = true)
-//    List<Users> findAllUsersByRoleId();
+    @Query(value = "SELECT id,user_name, user_mail FROM users WHERE id = :userId", nativeQuery = true)
+    List<Object[]> findByUser(@Param("userId") Long userId);
 
 }

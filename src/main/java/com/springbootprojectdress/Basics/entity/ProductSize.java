@@ -22,4 +22,7 @@ public class ProductSize {
     @Column(name = "size")
     private String size;
 
+    @Column(name = "quantity")
+    private int quantity;
+
 }

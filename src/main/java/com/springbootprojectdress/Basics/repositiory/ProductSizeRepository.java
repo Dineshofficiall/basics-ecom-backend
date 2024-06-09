@@ -9,4 +9,5 @@ public interface ProductSizeRepository extends JpaRepository<ProductSize, Long> 
     public List<ProductSize> findByProductId(Long pId);
 
 //    void deleteByProductId(Long pId);
+
 }
