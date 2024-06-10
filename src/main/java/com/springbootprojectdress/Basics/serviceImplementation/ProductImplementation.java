@@ -1,7 +1,10 @@
 package com.springbootprojectdress.Basics.serviceImplementation;
 
+import com.springbootprojectdress.Basics.entity.ProductDetails;
+import com.springbootprojectdress.Basics.entity.ProductSize;
 import com.springbootprojectdress.Basics.entity.Products;
 import com.springbootprojectdress.Basics.repositiory.ProductRepository;
+import com.springbootprojectdress.Basics.repositiory.ProductSizeRepository;
 import com.springbootprojectdress.Basics.repositiory.RatingRepository;
 import com.springbootprojectdress.Basics.serviceInterface.ProductInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class ProductImplementation implements ProductInterface {
 
     @Autowired
     RatingRepository ratingRepository;
+
+    @Autowired
+    ProductSizeRepository productSizeRepository;
 
 //  add product
     public String addSingleProduct(Products products) {
@@ -109,4 +115,17 @@ public class ProductImplementation implements ProductInterface {
         return productRepository.findProductsWithDiscountInRange();
     }
 
+//  productDetails
+    public ProductDetails getProductDetail(Long pId) {
+
+        Products product = productRepository.findById(pId).get();
+
+        List<ProductSize> productSizeList = productSizeRepository.findByProductId(pId);
+
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setProducts(product);
+        productDetails.setProductSize(productSizeList);
+
+        return productDetails;
+    }
 }

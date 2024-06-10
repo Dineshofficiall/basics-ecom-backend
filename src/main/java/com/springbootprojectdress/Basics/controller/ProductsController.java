@@ -1,10 +1,10 @@
 package com.springbootprojectdress.Basics.controller;
 
+import com.springbootprojectdress.Basics.entity.ProductDetails;
 import com.springbootprojectdress.Basics.entity.Products;
 import com.springbootprojectdress.Basics.serviceInterface.ProductInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -219,6 +219,22 @@ public class ProductsController {
         }
     }
 
+//  productDetailPage - idByProduct
+    @GetMapping("/getProductDetail/{pId}")
+    public ResponseEntity<?> getProductDetail(@PathVariable Long pId) {
+        ProductDetails productDetail = productInterface.getProductDetail(pId);
+
+        if (productDetail != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(productDetail);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("ErrorOccurred");
+        }
+    }
+
+//  uploadImage
     @PostMapping("/uploadImage")
     public  ResponseEntity<?> uploadImage (@RequestParam("file")MultipartFile images) throws IOException {
         byte[] bytes = images.getBytes();

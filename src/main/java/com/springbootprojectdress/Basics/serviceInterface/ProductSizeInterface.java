@@ -10,5 +10,7 @@ public interface ProductSizeInterface {
 
     List<ProductSize> getProductSizeId(Long pId);
 
-//    String productSizeDelById(Long pId);
+    String productSizeDelById(Long pId);
+
+    ProductSize productSizeUpdateById(ProductSize productSize);
 }

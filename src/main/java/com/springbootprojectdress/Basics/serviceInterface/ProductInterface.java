@@ -1,5 +1,6 @@
 package com.springbootprojectdress.Basics.serviceInterface;
 
+import com.springbootprojectdress.Basics.entity.ProductDetails;
 import com.springbootprojectdress.Basics.entity.Products;
 
 import java.util.List;
@@ -42,4 +43,7 @@ public interface ProductInterface {
 
 //  13.priceDiscount
     List<Products> getDiscountProduct();
+
+//  14.productDetails
+    ProductDetails getProductDetail(Long pId);
 }
