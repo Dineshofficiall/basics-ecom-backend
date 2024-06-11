@@ -10,9 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class KartDetails {
 
+    private Long kartId;
+
     private Long userId;
 
     private Products products;
 
-    private Long kartId;
+    private ProductSize productSize;
+
 }

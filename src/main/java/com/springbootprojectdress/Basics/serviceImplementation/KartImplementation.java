@@ -4,6 +4,7 @@ import com.springbootprojectdress.Basics.entity.Kart;
 import com.springbootprojectdress.Basics.entity.KartDetails;
 import com.springbootprojectdress.Basics.repositiory.KartRepository;
 import com.springbootprojectdress.Basics.repositiory.ProductRepository;
+import com.springbootprojectdress.Basics.repositiory.ProductSizeRepository;
 import com.springbootprojectdress.Basics.serviceInterface.KartInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class KartImplementation implements KartInterface {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ProductSizeRepository productSizeRepository;
 
 //  create
     public String createKartData(Kart kart) {
@@ -37,6 +41,7 @@ public class KartImplementation implements KartInterface {
             kartDetails.setKartId(kart.getId());
             kartDetails.setUserId(kart.getUserId());
             kartDetails.setProducts(productRepository.findById(kart.getProductId()).get());
+            kartDetails.setProductSize(productSizeRepository.findById(kart.getProductSizeId()).get());
             kartDetailsList.add(kartDetails);
         }
         return kartDetailsList;
