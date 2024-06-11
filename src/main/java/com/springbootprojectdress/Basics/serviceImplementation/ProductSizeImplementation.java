@@ -28,11 +28,11 @@ public class ProductSizeImplementation implements ProductSizeInterface {
     }
 
 //  updateById
-    public ProductSize productSizeUpdateById(ProductSize productSize) {
-        ProductSize productSize1 = productSizeRepository.findById(productSize.getId()).get();
+    public ProductSize productSizeUpdateById(Long pId, ProductSize productSize) {
+        ProductSize productSize1 = productSizeRepository.findById(pId).get();
 
         productSize1.setSize(productSize.getSize());
-        productSize1.setQuantity(productSize1.getQuantity());
+        productSize1.setQuantity(productSize.getQuantity());
         return productSizeRepository.save(productSize1);
     }
 

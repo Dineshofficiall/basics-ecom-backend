@@ -46,9 +46,9 @@ public class ProductSizeController {
     }
 
 //  updateById
-    @PutMapping("/update")
-    public ResponseEntity<?> updateProductSizeById(@RequestBody ProductSize productSize){
-        ProductSize productSizeDelResponse = productSizeInterface.productSizeUpdateById(productSize);
+    @PutMapping("/update/{pId}")
+    public ResponseEntity<?> updateProductSizeById(@PathVariable Long pId, @RequestBody ProductSize productSize){
+        ProductSize productSizeDelResponse = productSizeInterface.productSizeUpdateById(pId,productSize);
 
         if (productSizeDelResponse != null){
             return ResponseEntity.status(HttpStatus.OK)
