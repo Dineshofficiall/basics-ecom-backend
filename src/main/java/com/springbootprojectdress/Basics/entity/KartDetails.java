@@ -18,4 +18,6 @@ public class KartDetails {
 
     private ProductSize productSize;
 
+    private KartQuantity kartQuantity;
+
 }

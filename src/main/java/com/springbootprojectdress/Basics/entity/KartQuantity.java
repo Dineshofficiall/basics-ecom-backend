@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "kart")
-public class Kart {
+@Table(name = "kart_quantity")
+public class KartQuantity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,4 +25,6 @@ public class Kart {
     @Column(name = "product_size_id")
     private Long productSizeId;
 
+    @Column(name = "product_quantity")
+    private Long productQuantity;
 }
